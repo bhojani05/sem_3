@@ -1,85 +1,110 @@
-# 💪 Fitness Tracker Pro
+# 🚀 Project Showcase
 
-A full-featured fitness tracking web application built with **Streamlit**, featuring activity logging, nutrition & water tracking, workout plans, progress analytics, and an AI-powered fitness coach.
+This repository contains two independent full-stack projects, each demonstrating a different stack and set of skills — one built with **Python**, the other with **HTML/CSS/JavaScript**.
 
-## 📋 Overview
+| Project | Stack | Description |
+|---|---|---|
+| [💪 Fitness Tracker Pro](#-1-fitness-tracker-pro-python) | Python, Streamlit, SQLite | AI-powered fitness & wellness tracking app |
+| [✈️ Tripzy — Tours & Travels](#%EF%B8%8F-2-tripzy--tours--travels-web) | HTML, CSS, Bootstrap, JS | Travel booking website with admin dashboard |
 
-**Fitness Tracker Pro** is an all-in-one personal fitness dashboard. Users can create a secure account, log daily activities and meals, track water intake, follow workout plans, monitor progress over time with visual charts, and chat with an AI coach for personalized fitness advice — all from an interactive web interface powered by Streamlit and backed by a local SQLite database.
-
-## ✨ Features
-
-- **🔐 Secure Authentication** — User signup/login with salted, hashed passwords (PBKDF2-SHA256) and enforced password strength rules.
-- **📊 Dashboard** — At-a-glance overview of daily stats and goals.
-- **🏃 Activity Tracking** — Log workouts with type, duration, calories burned, distance, and intensity.
-- **🍎 Nutrition Logging** — Track meals and calorie/macro intake against daily goals.
-- **💧 Water Intake Tracker** — Monitor daily hydration against a configurable goal.
-- **🏋️ Workout Plans** — Create and follow structured workout routines.
-- **🏆 Achievements** — Unlock milestones as you hit fitness goals.
-- **🤖 AI Fitness Coach** — Get personalized advice via Groq's LLaMA 3.1 model, with a rule-based fallback if no API key is configured.
-- **📈 Progress & Reports** — Visualize trends over time using Plotly and Matplotlib charts.
-- **⚙️ Settings** — Manage profile details and preferences.
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend / App Framework | [Streamlit](https://streamlit.io/) |
-| Database | SQLite |
-| Charts | Plotly, Matplotlib |
-| Data Handling | Pandas |
-| AI Coach | [Groq API](https://groq.com/) (LLaMA 3.1 8B Instant) |
-| Auth/Security | `hashlib`, `secrets` (PBKDF2 password hashing) |
-
-## 📂 Project Structure
+## 📂 Repository Structure
 
 ```
-fitness-tracker-pro/
-├── Fitness_Tracker.py     # Main Streamlit application
-├── requirements.txt       # Python dependencies
+project-showcase/
+├── fitness-tracker-pro/
+│   ├── Fitness_Tracker.py
+│   ├── requirements.txt
+│   └── .streamlit/
+│       └── secrets.toml        # git-ignored, never commit
+│
+├── tripzy-tours-travels/
+│   ├── index.html
+│   ├── Explore1.html
+│   ├── Hotels_Premium.html
+│   ├── Tasty_Bites.html
+│   ├── Admin.html
+│   ├── PrivacyPolicy.html
+│   ├── T&C.html
+│   ├── style.css
+│   ├── new1.js
+│   ├── admin.js
+│   └── DataStructures.js
+│
+├── .gitignore
 └── README.md
 ```
 
-## 🚀 Getting Started
+---
 
-### 1. Clone the repository
+## 💪 1. Fitness Tracker Pro (Python)
+
+An AI-powered fitness tracking web app built with Streamlit. Users can log workouts, nutrition, and water intake, follow workout plans, monitor progress with interactive charts, and get personalized coaching from an LLM-powered AI trainer (via the Groq API), all backed by a SQLite database with secure, salted password authentication.
+
+### Features
+- 🔐 Secure signup/login with salted, hashed passwords (PBKDF2-SHA256)
+- 🏃 Activity, nutrition, and water intake logging
+- 🏋️ Workout plans and 🏆 achievements
+- 🤖 AI fitness coach powered by Groq's LLaMA 3.1 model
+- 📈 Progress charts and reports (Plotly, Matplotlib)
+
+### Tech Stack
+Python · Streamlit · SQLite · Pandas · Plotly · Matplotlib · Groq API
+
+### Setup & Run
 ```bash
-git clone https://github.com/your-username/fitness-tracker-pro.git
 cd fitness-tracker-pro
-```
-
-### 2. Install dependencies
-```bash
 pip install -r requirements.txt
 ```
 
-### 3. Configure your AI coach (optional)
-The AI coach feature requires a [Groq API key](https://console.groq.com/). Create a `.streamlit/secrets.toml` file (this file is git-ignored and should **never** be committed):
-
+Create `.streamlit/secrets.toml` (never commit this file):
 ```toml
 GROQ_API_KEY = "your-groq-api-key-here"
 ```
 
-If no key is provided, the app still runs — the AI coach will just be unavailable.
-
-### 4. Run the app
+Run the app:
 ```bash
 streamlit run Fitness_Tracker.py
 ```
 
-The app will open automatically in your browser at `http://localhost:8501`.
+---
+
+## ✈️ 2. Tripzy — Tours & Travels (Web)
+
+A responsive travel booking website built with HTML, CSS, Bootstrap, and vanilla JavaScript. Users can explore destinations, book hotels and dining, manage their bookings (edit, cancel, like, export as PDF), and sign in through a full authentication flow. A dedicated admin panel handles bookings, listings, and users, with client-side data persistence and custom-implemented data structures.
+
+### Features
+- 🔐 Full auth flow — signup, login, password reset (OTP-style)
+- 🗺️ Explore destinations, premium hotels, and dining options
+- 📑 Manage bookings — edit, cancel, like, and export confirmations as PDF
+- 🛠️ Admin dashboard — manage bookings, destinations, hotels, users, and messages
+- 🧱 Custom data structures (Stack, Queue, Priority Queue) implemented in vanilla JS
+- 🎨 Smooth UI animations via AOS, responsive design via Bootstrap 5
+
+### Tech Stack
+HTML5 · CSS3 · Bootstrap 5 · JavaScript (ES6) · Font Awesome · AOS · html2pdf.js
+*(Data persistence via browser `localStorage` — no backend server)*
+
+### Setup & Run
+No build step required — it's a static site.
+```bash
+cd tripzy-tours-travels
+```
+Then simply open `index.html` in your browser, or serve it locally:
+```bash
+npx serve .
+```
+
+---
 
 ## 🔒 Security Notes
 
-- Passwords are never stored in plain text — they're salted and hashed using PBKDF2-HMAC-SHA256 with 100,000 iterations.
-- API keys and secrets belong in `.streamlit/secrets.toml`, which should always be added to `.gitignore` and never pushed to version control.
-- The local `fitness_pro.db` SQLite file (created on first run) should also be excluded from version control, as it may contain real user data.
+- The Fitness Tracker's `.streamlit/secrets.toml` (API keys) and `fitness_pro.db` (local database) are excluded via `.gitignore` and must never be committed.
+- The Tripzy admin password and demo accounts are for **local/demo use only** — this site has no real backend authentication and should not be used to handle real user data in production.
 
 ## 🔮 Future Improvements
 
-- Migrate from SQLite to a production-grade database (e.g., PostgreSQL) for multi-user deployments
-- Add data export (CSV/PDF) for reports
-- Add social/sharing features for achievements
-- Containerize with Docker for easier deployment
+- **Fitness Tracker Pro:** migrate to a production database, add data export, containerize with Docker
+- **Tripzy:** connect to a real backend/database instead of `localStorage`, add payment gateway integration
 
 ## 📄 License
 
