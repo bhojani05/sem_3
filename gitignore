@@ -1,0 +1,19 @@
+# ===== Fitness Tracker Pro (Python) =====
+fitness-tracker-pro/.streamlit/secrets.toml
+fitness-tracker-pro/fitness_pro.db
+*.db
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.env
+venv/
+env/
+
+# ===== Tripzy Tours & Travels (Web) =====
+tripzy-tours-travels/node_modules/
+
+# ===== General / IDE =====
+.vscode/
+.idea/
+.DS_Store
